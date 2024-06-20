@@ -12,7 +12,6 @@ import CoreData
 class CategoryViewController: UITableViewController {
     
     var categories = [Category]()
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
@@ -22,55 +21,23 @@ class CategoryViewController: UITableViewController {
         self.tableView.register(UINib(nibName: "CategoryCell", bundle: nil), forCellReuseIdentifier: "CategoryCell")
     }
     
-    
-    //MARK: - TableView Datasource Methods
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return categories.count
-        
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as? CategoryCell else { return UITableViewCell()}
-        
-        cell.categoryLabel.text = categories[indexPath.row].name
-        cell.numberLabel.text = categories[indexPath.row].number
-        cell.addressLabel.text = categories[indexPath.row].address
-        return cell
-    }
-
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        90
-    }
-    
-    //MARK: - TableView Delegate Methods
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToItems", sender: self)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! TodoListViewController
         
         if let indexPath = tableView.indexPathForSelectedRow {
             destinationVC.selectedCategory = categories[indexPath.row]
         }
-        
     }
     
     //MARK: - Data Manipulation Methods
-    
     func saveCategories() {
         do {
             try context.save()
         } catch {
             print("Error saving category \(error)")
+            errorAlert("Error saving category \(error)")
         }
-        
         tableView.reloadData()
-        
     }
     
     func loadCategories() {
@@ -81,10 +48,9 @@ class CategoryViewController: UITableViewController {
             categories = try context.fetch(request)
         } catch {
             print("Error loading categories \(error)")
+            errorAlert("Error loading categories \(error)")
         }
-       
         tableView.reloadData()
-        
     }
     
     //MARK: - Add New Categories
@@ -126,7 +92,56 @@ class CategoryViewController: UITableViewController {
             numberTextField = numberField
             numberTextField.placeholder = "Phone number"
         }
-        
         present(alert, animated: true, completion: nil)
+    }
+    
+    func errorAlert(_ title: String) {
+        
+        let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "ok", style: .default)
+        alert.addAction(ok)
+        
+        self.present(alert, animated: true)
+    }
+    
+    //MARK: - TableView Datasource Methods
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return categories.count
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as? CategoryCell else { return UITableViewCell()}
+        
+        cell.categoryLabel.text = categories[indexPath.row].name
+        cell.numberLabel.text = categories[indexPath.row].number
+        cell.addressLabel.text = categories[indexPath.row].address
+        return cell
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        90
+    }
+    
+    //MARK: - TableView Delegate Methods
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToItems", sender: self)
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .normal, title: "O'chirish") { [self] _,_,_ in
+            
+            context.delete(categories[indexPath.row])
+            categories.remove(at: indexPath.row)
+            saveCategories()
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+        
+        deleteAction.backgroundColor = UIColor.red
+        let swipe = UISwipeActionsConfiguration(actions: [deleteAction])
+        return swipe
     }
 }

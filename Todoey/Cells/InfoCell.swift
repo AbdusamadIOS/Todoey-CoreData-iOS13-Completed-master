@@ -10,15 +10,26 @@ import UIKit
 
 class InfoCell: UITableViewCell {
 
+    static let identifeir = "InfoCell"
+    
+    @IBOutlet weak var photo1: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var qarzdorlikLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+       
+//        photo1.layer.cornerRadius = 10
+//        photo1.layer.borderColor = UIColor.lightGray.cgColor
+//        photo1.layer.borderWidth = 0.6
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        photo1.layer.cornerRadius = 10
+        photo1.layer.borderColor = UIColor.lightGray.cgColor
+        photo1.layer.borderWidth = 0.6
     }
     
 }
