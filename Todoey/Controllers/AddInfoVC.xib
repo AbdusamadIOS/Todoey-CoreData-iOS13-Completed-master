@@ -11,7 +11,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddInfoVC" customModule="Todoey" customModuleProvider="target">
             <connections>
+                <outlet property="addPhoto1" destination="0FP-2z-UsL" id="zQL-VC-Sv6"/>
+                <outlet property="addPhoto2" destination="Ake-2B-hN2" id="jbk-HT-dBa"/>
                 <outlet property="boshqaTF" destination="K7j-Sc-f9I" id="MNO-Gs-zl1"/>
+                <outlet property="editBtn" destination="U6r-nS-Bor" id="XIA-V1-wUH"/>
                 <outlet property="haqdorlikTF" destination="iv5-h9-Ny3" id="loG-AG-FbO"/>
                 <outlet property="photo1" destination="Npg-ob-gUx" id="Jia-Qt-OWl"/>
                 <outlet property="photo2" destination="tke-4P-vYf" id="W1R-Bn-uJl"/>
@@ -31,16 +34,16 @@
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="55" translatesAutoresizingMaskIntoConstraints="NO" id="N45-Q7-JS2">
                             <rect key="frame" x="0.0" y="0.0" width="295" height="120"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc.viewfinder.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Npg-ob-gUx">
-                                    <rect key="frame" x="0.0" y="1.3333333333333357" width="120" height="118"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shop" translatesAutoresizingMaskIntoConstraints="NO" id="Npg-ob-gUx">
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                     <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="120" id="IYa-1v-Lpt"/>
                                         <constraint firstAttribute="width" constant="120" id="KMQ-8o-ys9"/>
                                     </constraints>
                                 </imageView>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc.viewfinder.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tke-4P-vYf">
-                                    <rect key="frame" x="175" y="1.3333333333333357" width="120" height="118"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shop" translatesAutoresizingMaskIntoConstraints="NO" id="tke-4P-vYf">
+                                    <rect key="frame" x="175" y="0.0" width="120" height="120"/>
                                     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="120" id="9Fn-uP-8b4"/>
@@ -49,11 +52,11 @@
                                 </imageView>
                             </subviews>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" spacing="56" translatesAutoresizingMaskIntoConstraints="NO" id="gqn-8e-1Jv">
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="gqn-8e-1Jv">
                             <rect key="frame" x="0.0" y="127.99999999999999" width="295" height="34.333333333333329"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0FP-2z-UsL">
-                                    <rect key="frame" x="0.0" y="0.0" width="119.66666666666667" height="34.333333333333336"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="124" height="34.333333333333336"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Add photo 1"/>
                                     <connections>
@@ -61,7 +64,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ake-2B-hN2">
-                                    <rect key="frame" x="175.66666666666666" y="0.0" width="119.33333333333334" height="34.333333333333336"/>
+                                    <rect key="frame" x="171" y="0.0" width="124" height="34.333333333333336"/>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Add photo 2"/>
                                     <connections>
@@ -149,14 +152,26 @@
                         <action selector="saveButton:" destination="-1" eventType="touchUpInside" id="jjd-OW-Oxm"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U6r-nS-Bor">
+                    <rect key="frame" x="286.66666666666669" y="588.33333333333337" width="86.333333333333314" height="34.333333333333371"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" systemColor="tableCellBlueTextColor"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Edit Info"/>
+                    <connections>
+                        <action selector="editInfoBtn:" destination="-1" eventType="touchUpInside" id="Vzc-7M-MCf"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="ADM-g8-hW1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="2P8-Yb-JAG"/>
                 <constraint firstItem="6WW-F9-JRL" firstAttribute="top" secondItem="ADM-g8-hW1" secondAttribute="bottom" constant="90" id="6vt-L5-7xU"/>
+                <constraint firstItem="U6r-nS-Bor" firstAttribute="top" secondItem="ADM-g8-hW1" secondAttribute="bottom" constant="1" id="XGE-Sv-lDQ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ADM-g8-hW1" secondAttribute="trailing" constant="20" id="asB-iU-o0c"/>
                 <constraint firstItem="W6T-2J-vX7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="b47-f3-XtM"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="U6r-nS-Bor" secondAttribute="trailing" constant="20" id="bdS-yv-748"/>
                 <constraint firstItem="ADM-g8-hW1" firstAttribute="top" secondItem="W6T-2J-vX7" secondAttribute="bottom" constant="40" id="c27-Sk-1mE"/>
                 <constraint firstItem="W6T-2J-vX7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="iAM-zY-jYO"/>
                 <constraint firstItem="6WW-F9-JRL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="yMc-E0-POm"/>
@@ -165,12 +180,15 @@
         </view>
     </objects>
     <resources>
-        <image name="doc.viewfinder.fill" catalog="system" width="128" height="115"/>
+        <image name="shop" width="720" height="486"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tableCellBlueTextColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

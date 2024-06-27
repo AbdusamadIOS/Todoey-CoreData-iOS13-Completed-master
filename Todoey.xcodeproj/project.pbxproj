@@ -20,7 +20,10 @@
 		EEAB6B712C21542400151D64 /* AddInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAB6B6F2C21542400151D64 /* AddInfoVC.xib */; };
 		EEAB6B742C215FFA00151D64 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB6B722C215FFA00151D64 /* InfoCell.swift */; };
 		EEAB6B752C215FFA00151D64 /* InfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAB6B732C215FFA00151D64 /* InfoCell.xib */; };
+		EED9CC3A2C25FFF2007660B8 /* ShowPhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED9CC382C25FFF2007660B8 /* ShowPhotoVC.swift */; };
+		EED9CC3B2C25FFF2007660B8 /* ShowPhotoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EED9CC392C25FFF2007660B8 /* ShowPhotoVC.xib */; };
 		EEE5D11D2C248C7400AABEC1 /* infoDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5D11C2C248C7400AABEC1 /* infoDataModel.swift */; };
+		EEE5D1212C24A99E00AABEC1 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5D11E2C24A99E00AABEC1 /* LoginVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +42,10 @@
 		EEAB6B6F2C21542400151D64 /* AddInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddInfoVC.xib; sourceTree = "<group>"; };
 		EEAB6B722C215FFA00151D64 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
 		EEAB6B732C215FFA00151D64 /* InfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoCell.xib; sourceTree = "<group>"; };
+		EED9CC382C25FFF2007660B8 /* ShowPhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPhotoVC.swift; sourceTree = "<group>"; };
+		EED9CC392C25FFF2007660B8 /* ShowPhotoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShowPhotoVC.xib; sourceTree = "<group>"; };
 		EEE5D11C2C248C7400AABEC1 /* infoDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = infoDataModel.swift; sourceTree = "<group>"; };
+		EEE5D11E2C24A99E00AABEC1 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,10 +71,13 @@
 		AD79462C1FCED9070031D617 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EEE5D11E2C24A99E00AABEC1 /* LoginVC.swift */,
 				AD0968A91FD17AC20008922D /* CategoryViewController.swift */,
 				AD9E197C1FBDA0FD009CCEEA /* TodoListViewController.swift */,
 				EEAB6B6E2C21542400151D64 /* AddInfoVC.swift */,
 				EEAB6B6F2C21542400151D64 /* AddInfoVC.xib */,
+				EED9CC382C25FFF2007660B8 /* ShowPhotoVC.swift */,
+				EED9CC392C25FFF2007660B8 /* ShowPhotoVC.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -193,6 +202,7 @@
 			files = (
 				AD9E19851FBDA0FD009CCEEA /* LaunchScreen.storyboard in Resources */,
 				EEAB6B752C215FFA00151D64 /* InfoCell.xib in Resources */,
+				EED9CC3B2C25FFF2007660B8 /* ShowPhotoVC.xib in Resources */,
 				AD9E19821FBDA0FD009CCEEA /* Assets.xcassets in Resources */,
 				EEAB6B712C21542400151D64 /* AddInfoVC.xib in Resources */,
 				AD9E19801FBDA0FD009CCEEA /* Main.storyboard in Resources */,
@@ -212,6 +222,8 @@
 				AD3197CC1FD0213E00995E07 /* DataModel.xcdatamodeld in Sources */,
 				AD9E197B1FBDA0FD009CCEEA /* AppDelegate.swift in Sources */,
 				EEAB6B702C21542400151D64 /* AddInfoVC.swift in Sources */,
+				EEE5D1212C24A99E00AABEC1 /* LoginVC.swift in Sources */,
+				EED9CC3A2C25FFF2007660B8 /* ShowPhotoVC.swift in Sources */,
 				EEE5D11D2C248C7400AABEC1 /* infoDataModel.swift in Sources */,
 				EEAB6B6C2C21471800151D64 /* CategoryCell.swift in Sources */,
 				EEAB6B742C215FFA00151D64 /* InfoCell.swift in Sources */,
@@ -356,12 +368,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3ECFYJZ64T;
+				DEVELOPMENT_TEAM = 2B3232GK74;
 				INFOPLIST_FILE = Todoey/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BestSmartShop;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.londonappbrewery.Todoey;
+				PRODUCT_BUNDLE_IDENTIFIER = idevfan.uz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -372,12 +390,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3ECFYJZ64T;
+				DEVELOPMENT_TEAM = 2B3232GK74;
 				INFOPLIST_FILE = Todoey/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = BestSmartShop;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.londonappbrewery.Todoey;
+				PRODUCT_BUNDLE_IDENTIFIER = idevfan.uz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

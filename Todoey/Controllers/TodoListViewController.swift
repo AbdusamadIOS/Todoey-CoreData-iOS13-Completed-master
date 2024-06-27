@@ -32,8 +32,8 @@ class TodoListViewController: UITableViewController {
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
         let vc = AddInfoVC(nibName: "AddInfoVC", bundle: nil)
-           
-        vc.closure = { task in
+        vc.status = 0
+         vc.closure = { task in
             let newItem = Item(context: self.context)
             newItem.date = task.date
             newItem.haq = task.haqdorligi
@@ -50,7 +50,6 @@ class TodoListViewController: UITableViewController {
     
     //MARK: - Model Manupulation Methods
     func saveItems() {
-        
         do {
           try context.save()
         } catch {
@@ -106,10 +105,30 @@ class TodoListViewController: UITableViewController {
     
     //MARK: - TableView Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        context.delete(itemArray[indexPath.row])
-        itemArray.remove(at: indexPath.row)
-        saveItems()
-        tableView.deselectRow(at: indexPath, animated: true)
+       
+        let vc = AddInfoVC(nibName: "AddInfoVC", bundle: nil)
+        vc.status = 1
+        let item = itemArray[indexPath.row]
+        vc.showPhoto1 = UIImage(data: item.photo1!)
+        vc.showPhoto2 = UIImage(data: item.photo2!)
+        vc.haq = item.haq ?? ""
+        vc.other = item.other ?? ""
+        vc.qarz = item.qarz ?? ""
+    
+        vc.closure = { task in
+            let newItem = Item(context: self.context)
+            newItem.date = task.date
+            newItem.haq = task.haqdorligi
+            newItem.qarz = task.qarzdorligi
+            newItem.photo1 = task.photo1
+            newItem.photo2 = task.photo2
+            newItem.other = task.boshqa
+            newItem.parentCategory = self.selectedCategory
+            self.itemArray.append(newItem)
+            self.saveItems()
+        }
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -137,8 +156,8 @@ extension TodoListViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let request : NSFetchRequest<Item> = Item.fetchRequest()
-        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        let predicate = NSPredicate(format: "date CONTAINS[cd] %@", searchBar.text!)
+        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
         loadItems(with: request, predicate: predicate)
         
     }

@@ -9,15 +9,22 @@
 import UIKit
 import CoreData
 
+@available(iOS 16.0, *)
 class CategoryViewController: UITableViewController {
     
     var categories = [Category]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var selectedItem : Category? {
+        didSet {
+            loadItems()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadCategories()
+        self.navigationItem.setHidesBackButton(true, animated: true)
         self.tableView.register(UINib(nibName: "CategoryCell", bundle: nil), forCellReuseIdentifier: "CategoryCell")
     }
     
@@ -49,6 +56,24 @@ class CategoryViewController: UITableViewController {
         } catch {
             print("Error loading categories \(error)")
             errorAlert("Error loading categories \(error)")
+        }
+        tableView.reloadData()
+    }
+    
+    func loadItems(with request: NSFetchRequest<Category> = Category.fetchRequest(), predicate: NSPredicate? = nil) {
+        
+        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedItem!.name!)
+        if let addtionalPredicate = predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, addtionalPredicate])
+        } else {
+            request.predicate = categoryPredicate
+        }
+
+        do {
+            categories = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context \(error)")
+            errorAlert("Error fetching data from context \(error)")
         }
         tableView.reloadData()
     }
@@ -145,3 +170,33 @@ class CategoryViewController: UITableViewController {
         return swipe
     }
 }
+
+@available(iOS 16.0, *)
+extension CategoryViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let request : NSFetchRequest<Category> = Category.fetchRequest()
+        let predicate = NSPredicate(format: "address CONTAINS[cd] %@", searchBar.text!)
+        request.sortDescriptors = [NSSortDescriptor(key: "address", ascending: true)]
+        loadItems(with: request, predicate: predicate)
+        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadItems()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
